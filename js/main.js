@@ -5,21 +5,20 @@ let address = document.querySelector('.address');
 const contactList = document.querySelector('.contactList');
 
 const db = window.localStorage;
+let lastKey = 1;
 
 function addContact(){
     let contact = {
-        id: Math.random(1,100),
+        id: lastKey,
         name: name.value,
         phone: phone.value,
         address: address.value,
     }
     saveContact(db, contact);
-    // clearField();
-
-    loadContact(db, contactList);
-
+    loadContact(db, contactList, contact);
+    lastKey++;
 }
 
-loadContact(db, contactList);
+loadContacts(db, contactList);
 
 
