@@ -1,6 +1,7 @@
 const saveContact = (db, contact) => {
     db.setItem(contact.id, JSON.stringify(contact));
     clearField();
+    disabledForm()
 }
 
 const loadContacts = (db, parentNode) => {
@@ -40,9 +41,14 @@ const createContact = (parentNode, contact, db) => {
     removeIcon.innerHTML = 'delete';
 
     removeIcon.onclick = () => {
-        db.removeItem(contact.id);
-        divContact.remove();
-        lineH.remove();
+        divContact.classList.remove('contact')
+        divContact.classList.add('contact-removed')
+        setInterval(() => {
+            db.removeItem(contact.id);
+            divContact.remove();
+            lineH.remove();
+        }, 300)
+        popupInfo('Contact removed', 'warning')
     }
 
     divContact.classList.add('contact');
@@ -66,4 +72,47 @@ const clearField = () => {
 
 function parseToInt(str){
     return parseInt(str);
+}
+
+function showForm() {
+    if(subForm.classList.contains('sub-form-visible')){
+        disabledForm()
+    }else{
+        btnShowAdd.innerHTML = 'remove'
+        btnShowAdd.parentElement.style.backgroundColor = 'tomato'
+        btnAddContact.classList.remove('btn-add-contact-oculto');
+        btnAddContact.classList.remove('btn-show');
+        btnAddContact.classList.add('btn-add-contact-visible');
+        subForm.classList.remove('sub-form-oculto');
+        subForm.classList.remove('sub-form-start');
+        subForm.classList.add('sub-form-visible');
+    }
+}
+
+function disabledForm() {
+    btnShowAdd.innerHTML = 'add'
+    btnShowAdd.parentElement.style.backgroundColor = 'dodgerblue'
+    btnAddContact.classList.remove('btn-add-contact-visible');
+    btnAddContact.classList.add('btn-add-contact-oculto');
+    subForm.classList.remove('sub-form-visible');
+    subForm.classList.add('sub-form-oculto');
+}
+
+function popupInfo(msg, type){
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 2000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+
+    Toast.fire({
+        icon: type,
+        title: msg,
+    })
 }
