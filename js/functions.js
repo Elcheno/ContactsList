@@ -41,14 +41,28 @@ const createContact = (parentNode, contact, db) => {
     removeIcon.innerHTML = 'delete';
 
     removeIcon.onclick = () => {
-        divContact.classList.remove('contact')
-        divContact.classList.add('contact-removed')
-        setInterval(() => {
-            db.removeItem(contact.id);
-            divContact.remove();
-            lineH.remove();
-        }, 300)
-        popupInfo('Contact removed', 'warning')
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#22C219',
+            cancelButtonColor: '#FF6347FF',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                divContact.classList.remove('contact')
+                divContact.classList.add('contact-removed')
+                setInterval(() => {
+                    db.removeItem(contact.id);
+                    divContact.remove();
+                    lineH.remove();
+                }, 300)
+                popupInfo('Contact removed', 'warning')
+            }
+        })
+
     }
 
     divContact.classList.add('contact');

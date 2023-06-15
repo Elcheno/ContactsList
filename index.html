@@ -12,9 +12,42 @@
 
         <div class="formulario-datos">
             <div class="sub-form sub-form-start">
-                <input required type="text" class="name" placeholder="Name">
-                <input type="text" class="phone" placeholder="Phone">
-                <input type="text" class="address" placeholder="Address">
+                <div class="wave-group name-div-input">
+                    <input required="" type="text" class="input name">
+                    <span class="bar"></span>
+                    <label class="label">
+                        <span class="label-char" style="--index: 0">N</span>
+                        <span class="label-char" style="--index: 1">a</span>
+                        <span class="label-char" style="--index: 2">m</span>
+                        <span class="label-char" style="--index: 3">e</span>
+                    </label>
+                </div>
+
+                <div class="wave-group phone-div-input">
+                    <input required="" type="text" class="input phone">
+                    <span class="bar"></span>
+                    <label class="label">
+                        <span class="label-char" style="--index: 0">P</span>
+                        <span class="label-char" style="--index: 1">h</span>
+                        <span class="label-char" style="--index: 2">o</span>
+                        <span class="label-char" style="--index: 3">n</span>
+                        <span class="label-char" style="--index: 4">e</span>
+                    </label>
+                </div>
+
+                <div class="wave-group address-div-input">
+                    <input required="" type="text" class="input address">
+                    <span class="bar"></span>
+                    <label class="label">
+                        <span class="label-char" style="--index: 0">A</span>
+                        <span class="label-char" style="--index: 1">d</span>
+                        <span class="label-char" style="--index: 2">d</span>
+                        <span class="label-char" style="--index: 3">r</span>
+                        <span class="label-char" style="--index: 4">e</span>
+                        <span class="label-char" style="--index: 5">s</span>
+                        <span class="label-char" style="--index: 6">s</span>
+                    </label>
+                </div>
             </div>
             <button class="btn-add btn-show" onclick="showForm()"><span class="material-symbols-outlined btn-show-add">add</span></button>
             <button type="submit" class="btn-add-contact btn-add-contact-oculto btn-add" onclick="addContact()"><span class="material-symbols-outlined">add</span></button>

@@ -53,9 +53,10 @@ body{
 }
 
 .formulario-datos .sub-form-oculto{
-    height: 50px;
     visibility: hidden;
-    animation: animationOculto 0.2s linear;
+    animation: animationOculto 1.2s;
+    height: 50px;
+
 }
 
 @keyframes animationOculto {
@@ -87,7 +88,7 @@ body{
     }
 }
 
-.formulario-datos input{
+.formulario-datos .sub-form input{
     width: 90%;
     margin: 1rem auto;
     line-height: 4rem;
@@ -98,15 +99,15 @@ body{
     font-size: 2.5rem;
 }
 
-.formulario-datos input:active{
-    border-bottom: 2px solid rgba(255, 255, 255, 0.9);
-    border-left: 2px solid rgba(255, 255, 255, 0.9);
-}
+/*.formulario-datos input:active{*/
+/*    border-bottom: 2px solid rgba(255, 255, 255, 0.9);*/
+/*    border-left: 2px solid rgba(255, 255, 255, 0.9);*/
+/*}*/
 
-.formulario-datos input:focus{
-    border-bottom: 2px solid rgba(255, 255, 255, 0.9);
-    border-left: 2px solid rgba(255, 255, 255, 0.9);
-}
+/*.formulario-datos input:focus{*/
+/*    border-bottom: 2px solid rgba(255, 255, 255, 0.9);*/
+/*    border-left: 2px solid rgba(255, 255, 255, 0.9);*/
+/*}*/
 
 .formulario-datos .btn-add{
     margin: 1rem 0rem;
@@ -126,6 +127,7 @@ body{
 
 .formulario-datos .btn-add-contact-oculto{
     visibility: hidden;
+    animation:slide-rotate-horizontal-top 0.6s linear both;
 }
 
 .formulario-datos .btn-add-contact-visible{
@@ -174,6 +176,8 @@ hr{
     width: 95%;
 }
 
+@keyframes slide-rotate-horizontal-top{0%{transform:translateY(0) rotateX(0deg);visibility: visible}100%{transform:translateY(-150px) rotateX(-90deg);visibility: visible}}
+
 @keyframes vibrate{0%{transform:translate(0)}20%{transform:translate(-2px,2px)}40%{transform:translate(-2px,-2px)}60%{transform:translate(2px,2px)}80%{transform:translate(2px,-2px)}100%{transform:translate(0)}}
 
 @keyframes blur-in-expand{0%{transform:scale(0);filter:blur(12px);opacity:0}100%{transform:scale(1);filter:blur(0);opacity:1}}
@@ -182,4 +186,95 @@ hr{
 
 .swal2-popup {
     font-size: 1.8rem !important;
+}
+
+
+
+
+/* ----------------- ESTILO DE LOS INPUTS ----------------- */
+
+.wave-group {
+    position: relative;
+}
+
+.wave-group .input {
+    font-size: 16px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 200px;
+    border: none;
+    border-bottom: 1px solid #515151;
+    background: transparent;
+}
+
+.wave-group .input:focus {
+    outline: none;
+}
+
+.wave-group .label {
+    color: #999;
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    display: flex;
+}
+
+.wave-group .label-char {
+    transition: 0.2s ease all;
+    transition-delay: calc(var(--index) * .05s);
+}
+
+.wave-group .input:focus ~ label .label-char,
+.wave-group .input:valid ~ label .label-char {
+    transform: translateY(-20px);
+    font-size: 14px;
+    color: #ffffff;
+}
+
+.wave-group .bar {
+    position: relative;
+    display: block;
+    width: 90%;
+}
+
+.wave-group .bar:before,.wave-group .bar:after {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 1px;
+    position: absolute;
+    background: #ffffff;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+}
+
+.wave-group .bar:before {
+    left: 50%;
+}
+
+.wave-group .bar:after {
+    right: 50%;
+}
+
+.wave-group .input:focus ~ .bar:before,
+.wave-group .input:focus ~ .bar:after {
+    width: 50%;
+}
+
+/* -------------- MEDIA QUERIES -------------- */
+
+@media only screen and (max-width: 767px) {
+
+}
+
+@media only screen and (min-width: 768px) {
+
+}
+
+@media only screen and (min-width: 1024px) {
+
 }
