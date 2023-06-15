@@ -6,7 +6,6 @@
 
 html{
     font-family: "Century Gothic", SansSerif;
-    font-size: 62.5%;
 }
 
 body{
@@ -16,8 +15,6 @@ body{
 
 .wrapper{
     height: 100%;
-    width: 70vw;
-    margin: 2rem auto;
 }
 
 .wrapper .title{
@@ -40,23 +37,9 @@ body{
 
 .formulario-datos{
     display: block;
-    width: 50%;
-    margin: 12rem auto;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-}
-
-.formulario-datos .sub-form-start{
-    height: 50px;
-    visibility: hidden;
-}
-
-.formulario-datos .sub-form-oculto{
-    visibility: hidden;
-    animation: animationOculto 1.2s;
-    height: 50px;
-
 }
 
 @keyframes animationOculto {
@@ -99,40 +82,22 @@ body{
     font-size: 2.5rem;
 }
 
-/*.formulario-datos input:active{*/
-/*    border-bottom: 2px solid rgba(255, 255, 255, 0.9);*/
-/*    border-left: 2px solid rgba(255, 255, 255, 0.9);*/
-/*}*/
-
-/*.formulario-datos input:focus{*/
-/*    border-bottom: 2px solid rgba(255, 255, 255, 0.9);*/
-/*    border-left: 2px solid rgba(255, 255, 255, 0.9);*/
-/*}*/
-
 .formulario-datos .btn-add{
     margin: 1rem 0rem;
     background-color: #22C219;
     border: 0;
     outline: 0;
-    height: 3rem;
     border-radius: 5px;
     color: white;
     cursor: pointer;
-    font-size: 3rem;
+}
+
+.formulario-datos .btn-add{
+    font-weight: bold;
 }
 
 .formulario-datos .btn-show{
     background-color: dodgerblue;
-}
-
-.formulario-datos .btn-add-contact-oculto{
-    visibility: hidden;
-    animation:slide-rotate-horizontal-top 0.6s linear both;
-}
-
-.formulario-datos .btn-add-contact-visible{
-    visibility: visible;
-    animation:blur-in-expand 0.1s linear both;
 }
 
 .contactList{
@@ -156,7 +121,6 @@ body{
     flex-direction: row;
     justify-content: space-between;
     height: 6rem;
-    font-size: 2.5rem;
     align-items: center;
     animation:blur-out-contract 0.3s linear both
 }
@@ -175,8 +139,6 @@ hr{
     margin: auto;
     width: 95%;
 }
-
-@keyframes slide-rotate-horizontal-top{0%{transform:translateY(0) rotateX(0deg);visibility: visible}100%{transform:translateY(-150px) rotateX(-90deg);visibility: visible}}
 
 @keyframes vibrate{0%{transform:translate(0)}20%{transform:translate(-2px,2px)}40%{transform:translate(-2px,-2px)}60%{transform:translate(2px,2px)}80%{transform:translate(2px,-2px)}100%{transform:translate(0)}}
 
@@ -198,10 +160,8 @@ hr{
 }
 
 .wave-group .input {
-    font-size: 16px;
     padding: 10px 10px 10px 5px;
     display: block;
-    width: 200px;
     border: none;
     border-bottom: 1px solid #515151;
     background: transparent;
@@ -220,11 +180,12 @@ hr{
     left: 5px;
     top: 10px;
     display: flex;
+    margin-top: 10px;
 }
 
 .wave-group .label-char {
     transition: 0.2s ease all;
-    transition-delay: calc(var(--index) * .05s);
+    transition-delay: calc(var(--index) * .001s);
 }
 
 .wave-group .input:focus ~ label .label-char,
@@ -267,14 +228,114 @@ hr{
 
 /* -------------- MEDIA QUERIES -------------- */
 
-@media only screen and (max-width: 767px) {
-
-}
-
 @media only screen and (min-width: 768px) {
+    html{
+        font-size: 75%;
+    }
 
+    .wrapper{
+        margin: 4rem auto;
+        width: 85vw;
+    }
+
+    .formulario-datos{
+        width: 85%;
+        margin: 12rem auto;
+    }
+    .wave-group .input {
+        font-size: 22px;
+        width: 85vw;
+    }
+    .formulario-datos .btn-add{
+        height: 6rem;
+        font-size: 3rem;
+    }
+
+    .btn-add span{
+        font-size: 4rem;
+        font-weight: bold;
+    }
+
+    .btn-show{
+        display: none;
+    }
+
+    .btn-add-contact{
+        visibility: visible;
+    }
+
+    .formulario-datos .btn-add-contact-oculto{
+        visibility: visible;
+    }
+
+    .formulario-datos .btn-add-contact-visible{
+        visibility: visible;
+    }
+
+    .icon{
+        font-size: 4.5rem;
+    }
 }
 
 @media only screen and (min-width: 1024px) {
+    html{
+        font-size: 62.5%;
+    }
 
+    .wrapper{
+        margin: 1rem auto;
+        width: 70vw;
+
+    }
+
+    .formulario-datos{
+        width: 50%;
+        margin: 12rem auto;
+    }
+
+    .wave-group .input {
+        font-size: 16px;
+        width: 50vw;
+    }
+    .formulario-datos .btn-add{
+        height: 3rem;
+        font-size: 3rem;
+    }
+
+    .btn-add span{
+        font-size: 2rem;
+    }
+
+    .formulario-datos .sub-form-start{
+        height: 50px;
+        visibility: hidden;
+    }
+
+    .formulario-datos .sub-form-oculto{
+        visibility: hidden;
+        animation: animationOculto 0.8s;
+        height: 50px;
+
+    }
+
+    .btn-show{
+        display: block;
+    }
+
+    .btn-add-contact{
+        visibility: hidden;
+    }
+
+    .formulario-datos .btn-add-contact-oculto{
+        visibility: hidden;
+    }
+
+    .formulario-datos .btn-add-contact-visible{
+        visibility: visible;
+        animation:blur-in-expand 0.1s linear both;
+    }
+
+    .icon{
+        font-size: 3.2rem;
+    }
 }
